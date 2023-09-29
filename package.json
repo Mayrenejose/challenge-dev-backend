@@ -1,0 +1,19 @@
+{
+  "name": "challenge-dev-backend",
+  "version": "1.0.0",
+  "description": "desafios entregables en curos backend coderhouse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayrenejose/challenge-dev-backend.git"
+  },
+  "author": "mayrene mora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayrenejose/challenge-dev-backend/issues"
+  },
+  "homepage": "https://github.com/Mayrenejose/challenge-dev-backend#readme"
+}
