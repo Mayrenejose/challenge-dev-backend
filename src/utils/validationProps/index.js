@@ -1,4 +1,4 @@
-const fs =  require('fs')
+import fs from 'fs'
 
 const propsValidation = async(
     data, 
@@ -23,4 +23,4 @@ const propsValidation = async(
     return isValid
 }
 
-module.exports = { propsValidation }
+export default propsValidation

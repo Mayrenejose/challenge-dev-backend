@@ -1,5 +1,5 @@
-const fs =  require('fs')
-const { propsValidation } = require('./utils/validationProps')
+import fs from 'fs'
+import  propsValidation  from './utils/validationProps/index.js'
 
 class ProductManager {
 
@@ -12,8 +12,8 @@ class ProductManager {
     getAllProducts = async() => {
         try{
             if( !fs.existsSync(this.path) ) return []
-
             const db = await fs.promises.readFile(this.path, 'utf-8')
+
             return JSON.parse(db)
         } catch (error) {
             return console.log(error)
@@ -63,14 +63,10 @@ class ProductManager {
         }
     }
 
-    getProductById = async(id) => {
+    getProductById = async(pid) => {
         const data = await this.getAllProducts()
 
-        if(id > data.length) {
-            console.log(`Not found the id: ${id} not exist`);
-        } 
-
-        return data.filter(product => product.id === id)
+        return data.filter(product => product.id === pid)
     }
 
     updateProduct = async(id, fieldUpdate) => {
@@ -151,18 +147,20 @@ const startUp = async() => {
         'mal estado'
     )
     
-    console.log('-------------------DATA-----------------------')
-    console.log(await productManager.getAllProducts())
+    // console.log('-------------------DATA-----------------------')
+    // console.log(await productManager.getAllProducts())
     // console.log('-----------PRODUCT BY ID CHECK--------------')
     // console.log(await productManager.getProductById(2))
     // console.log('-----------PRODUCT BY NOT EXIST-------------')
     // console.log(await productManager.getProductById(5))
-    //console.log('-----------UPDATE PRODUCT BY ID-------------')
-    //console.log(await productManager.updateProduct(2, {code: 1236, description:'mal estado'}))
+    // console.log('-----------UPDATE PRODUCT BY ID-------------')
+    // console.log(await productManager.updateProduct(2, {code: 1236, description:'mal estado'}))
     // console.log('---------DELETE PRODUCT BY ID NO EXIST-----------')
     // console.log(await productManager.deleteProduct(5))
     // console.log('---------DELETE PRODUCT BY ID CHECK-----------')
     // console.log(await productManager.deleteProduct(3))
 }
 
-startUp()
+//startUp()
+
+export default ProductManager

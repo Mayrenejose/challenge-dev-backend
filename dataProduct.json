@@ -1,0 +1,29 @@
+[
+	{
+		"code": 10001,
+		"description": "producto 1",
+		"id": 8,
+		"price": 101,
+		"stock": 20000001,
+		"thumbnail": "https://github.com/orgs/programacion-backend-55585/discussions/1",
+		"title": "calidad"
+	},
+	{
+		"code": 10002,
+		"description": "producto 2",
+		"id": 6,
+		"price": 102,
+		"stock": 20000002,
+		"thumbnail": "https://github.com/orgs/programacion-backend-55585/discussions/1",
+		"title": "hermoso"
+	},
+	{
+		"code": 10003,
+		"description": "producto 3",
+		"id": 3,
+		"price": 103,
+		"stock": 20000003,
+		"thumbnail": "https://github.com/orgs/programacion-backend-55585/discussions/1",
+		"title": "mal estado"
+	}
+]
