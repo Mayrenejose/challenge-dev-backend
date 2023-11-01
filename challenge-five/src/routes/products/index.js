@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import ProductManager from '../../models/productManager/index.js'
 import checkExistingParameter from '../../middleware/checkExistingParameter/index.js'
+import { io } from '../../app.js'
 
 const router = Router()
 const productManager = new ProductManager()
@@ -45,8 +46,10 @@ router.post('/', async(req, res) => {
     try {
         const bodyGet = req.body
         const addNewProduct = await productManager.addProduct(bodyGet)
+        
+        if ( addNewProduct.length > 0 ) {
+            io.emit('view_products' , addNewProduct)
 
-        if ( addNewProduct === undefined ) {
             return res.status(200).json({ message: 'product successfully added' })
         } else {
             return res.status(400).json({error: 'non added product'})
@@ -73,7 +76,8 @@ router.delete('/:pid', validatorParams, async (req, res) => {
     try {
         const { pid } = req.params
 
-        await productManager.deleteProduct(Number(pid))
+        const delepeProduct = await productManager.deleteProduct(Number(pid))
+        io.emit('delete_product', delepeProduct)
         res.status(200).json({ message: 'Product successfully deleted' })
 
     } catch (error) {
