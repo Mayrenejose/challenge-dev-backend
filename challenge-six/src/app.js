@@ -4,6 +4,7 @@ import handlebars from 'express-handlebars'
 import routerProducts from './routes/products/index.js'
 import routerCarts from './routes/carts/index.js'
 import viewsHandlebars from './routes/views/index.js'
+import chatRouter from './routes/chat/index.js'
 import __dirname from './utils.js'
 import { Server } from 'socket.io'
 
@@ -32,6 +33,7 @@ mongoose.connect(url, {dbName: mongoDB})
     app.use('/api/products', routerProducts)
     app.use('/api/carts', routerCarts)
     app.use('/', viewsHandlebars)
+    app.use('/chat', chatRouter)
 
     //sockets
     io.on('connection', socket => {

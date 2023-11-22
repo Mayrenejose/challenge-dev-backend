@@ -5,30 +5,30 @@ const productsCollection = 'products'
 const productSchema = new mongoose.Schema({
     category: {
         type: String,
-        require: true
+        required: true
     },
     code: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true,
+        required: true,
         min: 1
     },
     status: {
         type: Boolean,
-        require: true,
+        required: true,
         default: true
     },
     stock: {
         type: Number,
-        require: true,
+        required: true,
         min: 1
     },
     thumbnails: {
@@ -37,7 +37,7 @@ const productSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        require: true
+        required: true
     }
 })
 

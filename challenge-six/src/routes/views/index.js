@@ -3,6 +3,19 @@ import ProductManager from '../../dao/managerMongoDB/productManager/index.js'
 
 const router = Router()
 
+router.get('/chat', async(req, res) => {
+    try {
+        res.render('chat', {
+            //dataProducts,
+            style: 'index.css',
+            title: 'Chat'
+        })
+
+    } catch {
+        res.status(500).send({error: 'error saving message'})
+    }
+})
+
 router.get('/:site', async(req, res) => {
     try {
         const params = req.params?.site
@@ -16,7 +29,7 @@ router.get('/:site', async(req, res) => {
         })
 
     } catch (error) {
-        res.status(500).send('error getting products')
+        res.status(500).send({error :'error getting products'})
     }
 })
 

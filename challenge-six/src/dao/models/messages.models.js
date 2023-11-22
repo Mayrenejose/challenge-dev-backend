@@ -4,15 +4,13 @@ const messagesCollection = 'messages'
 
 const messagesSchema = new mongoose.Schema({
     message: {
-        type: String,
-        require: true
+        type: [String],
+        default: []
     },
-    user: {
-        emailUser: {
-            type: String,
-            unique: true,
-            require: true
-        }
+    email: {
+        type: String,
+        required: true,
+        unique: true
     }
 })
 
