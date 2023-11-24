@@ -52,3 +52,83 @@ h2 {
     padding: 6px;
     background-color: #e1e6e3;
 }
+
+.positionBtn {
+    padding: 24px;
+}
+
+.btnChat {
+    width: 180px;
+    height: 50px;
+    color: black;
+    padding: 5px 10px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #e1e6e3;
+    background: #e1e6e3;
+}
+
+.btnChat:hover {
+    background: #fff;
+    color: black;
+}
+
+.inputCls {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.inputCls:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+.labelCls {
+    display: flex;
+    justify-content: end;
+}
+
+.mainChat {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 560px 0 0;
+    width: 100%;
+}
+
+.textareaCls {
+    width: 69%;
+    height: 40px;
+    padding: 8px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.textareaCls:focus {
+    outline: none;
+    border-color: #2980b9; 
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+.boxMessages {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; 
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+}

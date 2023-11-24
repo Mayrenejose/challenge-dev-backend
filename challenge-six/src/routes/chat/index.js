@@ -8,10 +8,8 @@ router.post('/', async(req, res) => {
     try {
         const bodyUser = req.body
         const newUser = await messageModel.create(bodyUser)
-
-        io.emit('chat_ecommerce' , newUser)
+        io.emit('chat_ecommerce' ,  newUser)
         res.status(200).json({data: newUser})
-       
     } catch (error) {
         console.error('Error adding user:', error);
         res.status(500).send({message: 'server error'})
@@ -28,7 +26,7 @@ router.post('/:id', async(req, res) => {
 
         const messageNew = await userEmail.save()
         io.emit('chat_ecommerce' ,  messageNew)
-        return res.status(200).json({ message: 'message successfully added' })
+        return res.status(200).json( messageNew )
 
     } catch (error) {
         console.error('messages get failed')
