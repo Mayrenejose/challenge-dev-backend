@@ -1,4 +1,13 @@
 # Challenge-dev-backend - 4
+- Creacion de chat y adaptar todo a base de datos Mongo DB
+
+![img](/challenge-six/src/imgs/chat-1.png)
+
+![img](/challenge-six/src/imgs/chat-2.png)
+
+![img](/challenge-six/src/imgs/chat-3.png)
+
+# Challenge-dev-backend - 4
 - Creacion de servicio websocket
 
 ![img](/challenge-five/src/imgs/img-2.png)
