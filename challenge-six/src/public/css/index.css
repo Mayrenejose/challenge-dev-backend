@@ -122,13 +122,27 @@ h2 {
 }
 
 .boxMessages {
-    width: 100%;
-    max-width: 600px;
+    width: 50%;
+    max-width: 63 rem;
     margin: 0 auto; 
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
+    padding: 45px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     min-height: 500px;
+}
+
+.inputEmail {
+    display: flex;
+    justify-content: center;
+}
+
+.containerText {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerText p {    
+    text-align: start;
 }

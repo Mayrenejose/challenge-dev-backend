@@ -1,18 +1,41 @@
 import { Router } from 'express'
 import ProductManager from '../../dao/managerMongoDB/productManager/index.js'
+import messageModel from '../../dao/models/messages.models.js'
 
 const router = Router()
 
 router.get('/chat', async(req, res) => {
     try {
+        const allUsers = await messageModel.find()
+        
         res.render('chat', {
-            //dataProducts,
+            allUsers,
             style: 'index.css',
             title: 'Chat'
         })
 
     } catch {
-        res.status(500).send({error: 'error saving message'})
+        res.status(500).send({error: 'error'})
+    }
+})
+
+router.get('/chat/:id', async(req, res) => {
+    try {
+        const idUser = req.params?.id
+        const userInformation = await messageModel.findById(idUser)
+        const email = userInformation.email
+        const textMsj = userInformation.message
+                
+        res.render('chatId', {
+            email,
+            textMsj,
+            idUser,
+            style: 'index.css',
+            title: 'Chat'
+        })
+
+    } catch {
+        res.status(500).send({error: 'error'})
     }
 })
 
