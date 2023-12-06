@@ -1,11 +1,11 @@
 # Challenge-dev-backend - 6
 - Crear un login.
 
-![img](/challenge-seven/src/imgs/chat-1.png)
+![img](/challenge-seven/src/imgs/img-1.png)
 
-![img](/challenge-seven/src/imgs/chat-2.png)
+![img](/challenge-seven/src/imgs/img-2.png)
 
-![img](/challenge-seven/src/imgs/chat-3.png)
+![img](/challenge-seven/src/imgs/img-3.png)
 
 # Challenge-dev-backend - 5
 - Creacion de chat y adaptar todo a base de datos Mongo DB
