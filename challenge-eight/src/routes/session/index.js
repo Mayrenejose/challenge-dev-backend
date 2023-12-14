@@ -53,22 +53,14 @@ router.post('/login', async(req, res) => {
     }
 })
 
-router.get('/github', passport.authenticate('github', { scope: ['user:email'] }),
-    async (req, res) => { }
-)
+router.get('/github',
+    passport.authenticate('github', { scope: [ 'user:email' ] }))
 
-router.get(
-    '/githubcb', passport.authenticate('github', {failureRedirect: '/error'}), (req, res) => {
-        console.log('Callback: ', req.user)
-
-        req.session.user = req.user
-        console.log('User Session setted')
-
-        res.redirect('/')
-    }
-)
-
-
+router.get('/github/callback',
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    function(req, res) {
+    res.redirect('/')
+})
 
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {

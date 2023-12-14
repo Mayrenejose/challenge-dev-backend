@@ -1,20 +1,17 @@
 import passport from "passport"
+import GitHubStrategy from 'passport-github2'
 import githubModel from "../dao/models/github.models.js"
-import GithubStrategy from 'passport-github2'
 
 const initializeGithub = () => {
 
-    passport.use('github', new GithubStrategy({
+    passport.use('github', new GitHubStrategy({
         clientID: 'Iv1.d5e53923309a4a62',
-        clientSecret: '30ea4a5617e7b16e17e7c11c94eee3fa87c55c38',
-        callbackURL: 'http://localhost:8080/githubcb'
+        clientSecret: '60ec544097798ed45ba56de2e58cd250dbfbaaeb',
+        callbackURL: 'http://localhost:8080/session/github/callback'
     }, async (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-
         try {
             const user = await githubModel.findOne({ email: profile._json.email })
             if(user) {
-                console.log('Ya se encuentra registrado')
                 return done(null, user)
             }
 

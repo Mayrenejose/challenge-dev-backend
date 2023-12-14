@@ -33,6 +33,10 @@ app.use(session({
     saveUninitialized: true
 }))
 
+initializeGithub()
+    app.use(passport.initialize())
+    app.use(passport.session())
+
 mongoose.connect(url, {dbName: mongoDB})
 .then(() => {
     console.log('Conectado DB')
@@ -50,11 +54,7 @@ mongoose.connect(url, {dbName: mongoDB})
     app.use('/api/carts', routerCarts)
     app.use('/', viewsHandlebars)
     app.use('/chat', chatRouter)
-    app.use('/session', sessionRouter)
-
-    initializeGithub()
-    app.use(passport.initialize())
-    app.use(passport.session())
+    app.use('/session', sessionRouter)    
 
     //sockets
     io.on('connection', socket => {
@@ -64,4 +64,3 @@ mongoose.connect(url, {dbName: mongoDB})
 .catch(error => console.error('Error in connection', error))
 
 export { io }
-//30ea4a5617e7b16e17e7c11c94eee3fa87c55c38
