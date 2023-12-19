@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import usersModel from '../../dao/models/user.models.js'
+import { createHash, isValidPassword } from '../../utils/validationHash/index.js'
 import passport from 'passport'
 
 const router = Router()
@@ -14,44 +15,26 @@ router.get('/users', async(req, res) => {
     }
 })
 
-
 router.post('/register', async(req, res) => {
     try {         
         const body = req.body 
-        const { email } = req.body
-        const existingUser = await usersModel.findOne({ email })   
-        
-        if ( !existingUser ) {            
-            await usersModel.create(body)
-            return res.redirect('/') 
-        } 
-        return res.redirect('/') 
+        body.password = createHash(body.password)        
+        const result = await usersModel.create(body)
+
+        return res.redirect('/login')
     } catch(error) {        
         res.status(500).send('Error registering user')
     }
 })
 
+router.post('/login', passport.authenticate('login', { failureRedirect: '/' }),
+    async (req, res) => {
+        if (!req.user) return res.status(400).send('Invalid Credentiasls')
 
-router.post('/login', async(req, res) => {
-    try {
-        const { email, password } = req.body
-        const existingUser = await usersModel.findOne({ email, password })  
-        
-        if ( !existingUser ){
-            return res.redirect('/')
-        }
-
-        if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-            existingUser.role = 'admin'
-            await existingUser.save()
-        }  
-
-        req.session.user = existingUser 
-        return res.redirect('/products') 
-    } catch(error) {      
-        res.status(500).send('Error logging in user')
+        req.session.user = req.user
+        return res.redirect('/products')
     }
-})
+)
 
 router.get('/github',
     passport.authenticate('github', { scope: [ 'user:email' ] }))

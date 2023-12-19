@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         required: true,        
         trim: true
     },
-    age: Number,
+    age: String,
     password: {
         type: String,
         required: true

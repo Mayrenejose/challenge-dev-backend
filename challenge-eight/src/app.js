@@ -9,7 +9,7 @@ import routerCarts from './routes/carts/index.js'
 import viewsHandlebars from './routes/views/index.js'
 import chatRouter from './routes/chat/index.js'
 import sessionRouter from './routes/session/index.js'
-import initializeGithub from './config/index.js'
+import initialize from './config/index.js'
 import __dirname from './utils.js'
 import { Server } from 'socket.io'
 
@@ -33,7 +33,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
-initializeGithub()
+initialize()
     app.use(passport.initialize())
     app.use(passport.session())
 
