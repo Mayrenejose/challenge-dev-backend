@@ -1,3 +1,93 @@
+# Challenge-dev-backend - 9
+- Nueva arquitectura.
+
+```
+├─ challenge-nine
+│  ├─ .env
+│  ├─ .vscode
+│  │  └─ settings.json
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ src
+│  │  ├─ app.js
+│  │  ├─ config
+│  │  │  └─ index.js
+│  │  ├─ dao
+│  │  │  ├─ managerFS
+│  │  │  │  ├─ cartManager
+│  │  │  │  │  └─ index.js
+│  │  │  │  ├─ data
+│  │  │  │  │  ├─ dataCart.json
+│  │  │  │  │  └─ dataProduct.json
+│  │  │  │  └─ productManager
+│  │  │  │     └─ index.js
+│  │  │  └─ managerMongoDB
+│  │  │     ├─ cartManagerDB
+│  │  │     │  └─ index.js
+│  │  │     └─ productManager
+│  │  │        └─ index.js
+│  │  ├─ imgs
+│  │  │  ├─ img-1.png
+│  │  │  └─ img-2.png
+│  │  ├─ middleware
+│  │  │  ├─ auth
+│  │  │  │  └─ index.js
+│  │  │  ├─ checkExistingParameter
+│  │  │  │  └─ index.js
+│  │  │  └─ session
+│  │  │     └─ index.js
+│  │  ├─ models
+│  │  │  ├─ carts.models.js
+│  │  │  ├─ messages.models.js
+│  │  │  ├─ product.models.js
+│  │  │  └─ user.models.js
+│  │  ├─ public
+│  │  │  ├─ css
+│  │  │  │  └─ index.css
+│  │  │  └─ js
+│  │  │     ├─ chat
+│  │  │     │  └─ index.js
+│  │  │     ├─ chatId
+│  │  │     │  └─ index.js
+│  │  │     ├─ home
+│  │  │     │  └─ index.js
+│  │  │     ├─ product
+│  │  │     │  └─ index.js
+│  │  │     ├─ products
+│  │  │     │  └─ index.js
+│  │  │     └─ realTime
+│  │  │        └─ index.js
+│  │  ├─ routes
+│  │  │  ├─ carts
+│  │  │  │  └─ index.js
+│  │  │  ├─ chat
+│  │  │  │  └─ index.js
+│  │  │  ├─ products
+│  │  │  │  └─ index.js
+│  │  │  ├─ session
+│  │  │  │  └─ index.js
+│  │  │  └─ views
+│  │  │     └─ index.js
+│  │  ├─ utils
+│  │  │  ├─ validationHash
+│  │  │  │  └─ index.js
+│  │  │  ├─ validationProps
+│  │  │  │  └─ index.js
+│  │  │  └─ validationTypes
+│  │  │     └─ index.js
+│  │  ├─ utils.js
+│  │  └─ views
+│  │     ├─ chat.handlebars
+│  │     ├─ chatId.handlebars
+│  │     ├─ home.handlebars
+│  │     ├─ layouts
+│  │     │  └─ main.handlebars
+│  │     ├─ login.handlebars
+│  │     ├─ product.handlebars
+│  │     ├─ products.handlebars
+│  │     ├─ realTimeProducts.handlebars
+│  │     └─ register.handlebars
+´´´´
 # Challenge-dev-backend - 7
 - Inicio de sesion con GITHUB.
 
