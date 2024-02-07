@@ -15,7 +15,7 @@ class ProductManager {
             const db = await fs.promises.readFile(this.path, 'utf-8')
             return JSON.parse(db)
         } catch (error) {
-            return console.log(error)
+            return logger.error(error)
         }
     }
 
@@ -44,7 +44,7 @@ class ProductManager {
             return this.products
             
         } catch(error) {
-            return console.log(error, 'product creation failed')
+            return logger.error(error, 'product creation failed')
         }
         
     }
@@ -88,7 +88,7 @@ class ProductManager {
                 console.log('product updated successfully')
             })
             } catch (error) {
-                console.log('product update failed')
+                logger.erro(error)
                 throw new Error('Error updating product')
             }
     }
@@ -108,7 +108,7 @@ class ProductManager {
                 throw new Error('Product not found')
             }
         } catch (error) {
-            console.log('Product delete failed')
+            logger.erro(error)
             throw new Error('Error deleting product')
         }
     }

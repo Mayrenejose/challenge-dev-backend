@@ -17,7 +17,7 @@ class CartManager {
             const db = await fs.promises.readFile(this.path, 'utf-8')
             return JSON.parse(db)
         } catch (error) {
-            return console.log(error)
+            return logger.log(error)
         }
     }
 
@@ -28,7 +28,7 @@ class CartManager {
             return cartArray.find(cart => cart.id === cid)
 
         } catch (error) {
-            return console.log(error)
+            return logger.error(error)
         }
     }
 
@@ -47,7 +47,7 @@ class CartManager {
             await fs.promises.writeFile(this.path, JSON.stringify(this.cart, null, '\t'))
 
         } catch {
-            console.log(error, 'cart creation failed')
+            logger.log(error, 'cart creation failed')
             throw new Error('error')
         }
     }
@@ -84,7 +84,7 @@ class CartManager {
             await fs.promises.writeFile(this.path, JSON.stringify(cart, null, '\t'))
 
         } catch (error) {
-            console.log(error, 'The product was not added to the cart')
+            logger.log(error, 'The product was not added to the cart')
             throw new Error('error')
         }
     }

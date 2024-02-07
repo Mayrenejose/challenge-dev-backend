@@ -38,7 +38,7 @@ export default class CartRepository {
             return cart
 
         } catch (error) {
-            console.log(error, 'The product was not added to the cart')
+            logger.erro(error)
             throw new Error('error')
         }
     }

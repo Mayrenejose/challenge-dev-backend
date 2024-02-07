@@ -32,7 +32,7 @@ export const getMessage = async(req, res) => {
         
         res.status(200).json({data: messageHistory})
     } catch (error) {
-        console.error('error getting history:', error);
+        logger.error('error getting history:', error);
         res.status(500).send({message: 'server error'})
     }
 }
@@ -43,7 +43,7 @@ export const addUser = async(req, res) => {
         const newUser = await ChatService.addUser(bodyUser)
         res.status(200).json({data: newUser})
     } catch (error) {
-        console.error('Error adding user:', error);
+        logger.error('Error adding user:', error);
         res.status(500).send({message: 'server error'})
     }
 }
@@ -55,7 +55,7 @@ export const addMessage = async(req, res) => {
         const userEmail = await ChatService.addMessage(idUser, bodyMessage)
         return res.status(200).json(userEmail)
     } catch (error) {
-        console.error(error)
+        logger.error(error)
         res.status(500).send({message: 'server error'})
     }
 }

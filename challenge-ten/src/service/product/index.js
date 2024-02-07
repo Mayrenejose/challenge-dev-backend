@@ -48,7 +48,7 @@ export default class ProductRepository {
 
             return getProducts
         } catch (error) {
-            return console.log(error)
+            logger.erro(error)
         }
     }
 

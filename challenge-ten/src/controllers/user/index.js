@@ -13,8 +13,8 @@ export const getCurrent = async (req, res) => {
         res.status(200).json({ data:userData })
         
     } catch (error) {
+        logger.erro(error)
         res.status(500).send('Error server')
-
     }
 }
 
@@ -24,6 +24,7 @@ export const getUsers = async(req, res) => {
         
         res.status(200).json({data: allUsers})
     } catch(error) { 
+        logger.erro(error)
         res.status(500).send('Error server')
     }
 }
@@ -37,7 +38,8 @@ export const addRegister =  async(req, res) => {
         if (!result) return res.status(400).send('Error registering user')
         
         return res.redirect('/login')
-    } catch(error) {        
+    } catch(error) {     
+        logger.erro(error)   
         res.status(500).send(`Error registering user: ${error.message}`)
     }
 }
@@ -52,7 +54,7 @@ export const addLogin = async (req, res) => {
 
 export const loginGithub = function(req, res) {
     if (!req.user) {
-        console.error('Authentication failed.')
+        logger.error('Authentication failed.')
         return res.redirect('/')
     }
     return res.redirect('/products')
@@ -61,7 +63,6 @@ export const loginGithub = function(req, res) {
 export const logout = (req, res) => {
     req.session.destroy(err => {
         if(err) return res.send('error')
-
         return res.redirect('/')
     })
 }

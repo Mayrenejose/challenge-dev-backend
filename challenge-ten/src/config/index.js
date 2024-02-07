@@ -78,12 +78,12 @@ const initialize = () => {
         try {
             const user = await UserModel.findOne({ email: username}).lean().exec()
             if(!user) {   
-                console.error('user invalid')             
+                logger.error('user invalid')             
                 return done(null, false)
             }
             
             if(!isValidPassword(user, password)) {
-                console.error('password invalid')
+                logger.error('password invalid')
                 return done(null, false)
             }
             return done(null, user)
