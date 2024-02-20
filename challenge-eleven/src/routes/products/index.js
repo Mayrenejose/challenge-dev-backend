@@ -15,8 +15,8 @@ router.use(addLogger)
 
 router.get('/', passport.authenticate('jwt', {session: false}), getAllProducts)
 router.get('/:pid', passport.authenticate('jwt', {session: false}), getProductById) 
-router.post('/', passport.authenticate('jwt', {session: false}), authorizationSystem('admin'),  addProduct) 
+router.post('/', passport.authenticate('jwt', {session: false}), authorizationSystem('admin', 'premium'),  addProduct) 
 router.put('/:pid', passport.authenticate('jwt', {session: false}), authorizationSystem('admin'),  updateProduct)
-router.delete('/:pid', passport.authenticate('jwt', {session: false}), authorizationSystem('admin'), deleteProduct)  
+router.delete('/:pid', passport.authenticate('jwt', {session: false}), authorizationSystem('admin', 'premium'), deleteProduct)  
 
 export default router

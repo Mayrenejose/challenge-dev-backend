@@ -39,7 +39,7 @@ router.get('/login', async(req, res) => {
     }
 })
 
-router.get('/chat', passport.authenticate('jwt', {session: false}), async(req, res) => {
+router.get('/chat', async(req, res) => {
     try {
         const allUsers = await ChatService.getAllUsers()        
         res.render('chat', {
@@ -53,7 +53,7 @@ router.get('/chat', passport.authenticate('jwt', {session: false}), async(req, r
     }
 })
 
-router.get('/chat/:id', passport.authenticate('jwt', {session: false}), async(req, res) => {
+router.get('/chat/:id', async(req, res) => {
     try {
         const idUser = req.params?.id
         const userInformation = await ChatService.getMessage(idUser)
@@ -106,7 +106,7 @@ router.get('/products', passport.authenticate('jwt', {session: false}), async(re
     }
 })
 
-router.get('/product/:_id', passport.authenticate('jwt', {session: false}), async(req, res) => {
+router.get('/product/:_id', async(req, res) => {
     try {   
         const idProduct = req.params?._id
         const infoProduct = await ProductService.getProductById(idProduct)
@@ -133,7 +133,7 @@ router.get('/product/:_id', passport.authenticate('jwt', {session: false}), asyn
     }
 })
 
-router.get('/:site', passport.authenticate('jwt', {session: false}), async(req, res) => {
+router.get('/:site', async(req, res) => {
     try {
         const params = req.params?.site
         const limit = parseInt(req.query?.limit ?? 2)

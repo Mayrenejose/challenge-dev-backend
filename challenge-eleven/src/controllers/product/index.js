@@ -1,4 +1,5 @@
 import { ProductService } from '../../service/index.js'
+import { UserService } from '../../service/index.js'
 import { io } from '../../app.js' 
 
 export const getAllProducts =  async(req, res) => {
@@ -71,8 +72,14 @@ export const updateProduct = async(req, res) => {
 export const deleteProduct = async (req, res) => {
     try {
         const { pid } = req.params
-        const deleteProduct = await ProductService.deleteProduct(pid)
+        const productDelet = await ProductService.getProductById(pid)
+        let deleteProduct
         
+        if ( req.user.role === 'premium' && productDelet.owner === req.user.email ) {
+           await ProductService.deleteProduct(pid)
+        } else {
+            deleteProduct = await ProductService.deleteProduct(pid)
+        }
         if ( deleteProduct === 0 ) {
             res.status(400).json({ error: 'Product not deleted' })
         } else {

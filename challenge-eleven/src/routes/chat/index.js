@@ -7,7 +7,7 @@ import {
     addMessage
 } from '../../controllers/chat/index.js'
 import passport from 'passport'
-import authorizationSystem  from '../../middleware/authorizationSystem/index.js'
+import authorizationSystem from '../../middleware/authorizationSystem/index.js'
 import { addLogger } from '../../middleware/loggerMidleware/index.js'
 
 const router = Router()

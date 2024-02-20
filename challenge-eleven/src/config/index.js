@@ -5,6 +5,7 @@ import passportJWT from 'passport-jwt'
 import UserModel from '../dao/models/user.models.js'
 import { createHash, isValidPassword } from '../utils/validationHash/index.js'
 import config from "./config.js"
+import { logger } from "../utils/logger/index.js"
 
 const LocalStrategy = local.Strategy
 const JWTStrategy = passportJWT.Strategy
