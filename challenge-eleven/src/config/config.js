@@ -13,5 +13,8 @@ export default {
     clientSecretToken: process.env.GITHUB_SECRET,
     urlCallback: process.env.GITHUB_URL,
     secretKey: process.env.JWT_SECRET,
-    env: process.env.ENVIRONMET
+    env: process.env.ENVIRONMET,
+    serviceEmail: process.env.SERVICE_EMAIL,
+    serviceUser: process.env.SERVICE_USER,
+    servicePassword: process.env.SERVICE_PASSWORD
 }

@@ -9,6 +9,7 @@ import viewsHandlebars from './routes/views/index.js'
 import chatRouter from './routes/chat/index.js'
 import sessionRouter from './routes/session/index.js'
 import testRouter from './routes/logger/index.js'
+import emailRouter from './routes/email/index.js'
 import initialize from './config/index.js'
 import __dirname from './utils.js'
 import config from './config/config.js'
@@ -51,7 +52,8 @@ app.use('/api/products', routerProducts)
 app.use('/api/carts', routerCarts)
 app.use('/', viewsHandlebars)
 app.use('/chat', chatRouter)
-app.use('/session', sessionRouter)    
+app.use('/session', sessionRouter)  
+app.use('/email', emailRouter)    
 
 //sockets
 io.on('connection', socket => {
