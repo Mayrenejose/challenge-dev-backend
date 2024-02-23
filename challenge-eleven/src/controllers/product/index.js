@@ -1,5 +1,4 @@
 import { ProductService } from '../../service/index.js'
-import { UserService } from '../../service/index.js'
 import { io } from '../../app.js' 
 
 export const getAllProducts =  async(req, res) => {

@@ -2,7 +2,10 @@ import { Router } from 'express'
 import { ProductService, ChatService } from '../../service/index.js'
 import passport from 'passport'
 import { addLogger } from '../../middleware/loggerMidleware/index.js'
+import config from '../../config/config.js'
+import jwt from 'jsonwebtoken'
 
+const SECRET_JWT = config.secretKey
 const router = Router()
 router.use(addLogger)
 
@@ -130,6 +133,29 @@ router.get('/product/:_id', async(req, res) => {
 
     } catch (error) {
         res.status(500).send({status:'error'})
+    }
+})
+
+router.get('/password-reset',  async(req, res) => {
+    try {
+        const { token } = req.query
+        if (!token) {
+            return res.status(400).send({ message: 'Token not provided' });
+        }
+        try {
+            const decoded = jwt.verify(token, SECRET_JWT)
+
+            res.render('password', {
+                style: 'index.css',
+                title: 'Cambio de contraseña',
+                token 
+            })
+        } catch (error) {
+            console.error(error);
+            return res.status(401).send({ message: 'Token is invalid or expired' });
+        }
+    } catch {
+        res.status(500).send({error: 'error'})
     }
 })
 

@@ -46,10 +46,9 @@ export const addRegister =  async(req, res) => {
 
 export const addLogin = async (req, res) => {
     if (!req.user) return res.status(400).send('Invalid Credentiasls')
-    const token = jwt.sign({user: req.user }, SECRET_JWT, { expiresIn: '24h' });
+    const token = jwt.sign({user: req.user }, SECRET_JWT, { expiresIn: '24h' })
    
-    res.json({token})           
-    //return res.redirect('/products')
+    res.json({token})
 }
 
 export const loginGithub = function(req, res) {

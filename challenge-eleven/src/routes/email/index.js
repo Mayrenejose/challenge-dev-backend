@@ -5,6 +5,6 @@ import { addLogger } from '../../middleware/loggerMidleware/index.js'
 const router = Router()
 router.use(addLogger)
 
-router.get('/send', getEmail)
+router.post('/send', getEmail)
 
 export default router
