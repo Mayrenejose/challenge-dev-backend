@@ -27,7 +27,7 @@ export const getEmail = async(req, res) => {
         if(searchUser === undefined) return res.status(400).send({ message: 'email not exist', status: 400 })
         const token = jwt.sign({email: email }, SECRET_JWT, { expiresIn: '1h' })
         const resetPasswordLink = `http://localhost:8080/password-reset?token=${token}`
-        console.log(token);
+        
         await transport.sendMail({
             from: config.serviceUser,
             to: email,
@@ -40,7 +40,7 @@ export const getEmail = async(req, res) => {
                 </div>
             `
         })
-        res.send('Message sent')
+        res.send({message: 'Message sent'})
     } catch (error) {
         res.status(500).send({message: 'server error'})
     }

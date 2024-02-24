@@ -5,4 +5,6 @@ export default class UserRepository {
     getUsers = async() => {return this.dao.getUsers()}
 
     addRegister = async body => {return this.dao.addRegister(body)}
+
+    updatePassword = async body => {return this.dao.updatePassword(body)}
 } 

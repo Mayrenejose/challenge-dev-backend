@@ -144,18 +144,21 @@ router.get('/password-reset',  async(req, res) => {
         }
         try {
             const decoded = jwt.verify(token, SECRET_JWT)
+            const email = decoded.email
 
             res.render('password', {
                 style: 'index.css',
                 title: 'Cambio de contraseña',
-                token 
+                token,
+                email
             })
+        
         } catch (error) {
-            console.error(error);
-            return res.status(401).send({ message: 'Token is invalid or expired' });
+            logger.error(error)
+            return res.status(401).send({ message: 'Token is invalid or expired' })
         }
     } catch {
-        res.status(500).send({error: 'error'})
+        res.status(500).send({message: 'Link de recuperación de contraseña vencido, debes generar otro'})
     }
 })
 

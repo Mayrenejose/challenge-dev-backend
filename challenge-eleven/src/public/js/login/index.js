@@ -54,15 +54,12 @@ document.getElementById('recoverKey').addEventListener('click', async function(e
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if(data.status != 200 ) return alert('Correo electronico no registrado')
             alert('Se ha enviado un correo electrónico de recuperación a: ' + email)
         })
         .catch(error => {
             console.log(error)
         })
-
-       
     } else {
         alert('Debes ingresar un correo electrónico válido para recuperar tu clave.')
     }

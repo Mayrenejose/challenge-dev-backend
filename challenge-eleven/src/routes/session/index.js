@@ -5,7 +5,8 @@ import {
     addRegister,
     addLogin,
     loginGithub,
-    logout
+    logout,
+    updatePassword
 } from '../../controllers/user/index.js'
 import passport from 'passport'
 import { addLogger } from '../../middleware/loggerMidleware/index.js'
@@ -20,5 +21,6 @@ router.get('/github/callback', passport.authenticate('github', { failureRedirect
 router.post('/login', passport.authenticate('login', {session: false}), addLogin)
 router.get('/logout', logout)
 router.get('/current', passport.authenticate('jwt', {session: false}), getCurrent)
+router.put('/changePassword/:email', updatePassword)
 
 export default router

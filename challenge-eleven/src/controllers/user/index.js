@@ -65,3 +65,15 @@ export const logout = (req, res) => {
         return res.redirect('/')
     })
 }
+
+export const updatePassword = async(req, res) => {
+    try {
+        const body = req.body 
+        const update = await UserService.updatePassword(body)
+        console.log(update);
+        res.json({message: 'contraseña cambiada con exito' })
+
+    } catch (error) {
+        res.status(500).send({message: 'server error'})
+    }
+}
