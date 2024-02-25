@@ -69,8 +69,9 @@ export const logout = (req, res) => {
 export const updatePassword = async(req, res) => {
     try {
         const body = req.body 
-        const update = await UserService.updatePassword(body)
-        console.log(update);
+        body.password = createHash(body.password)    
+        const email = req.params.email
+        await UserService.updatePassword(email,body)
         res.json({message: 'contraseña cambiada con exito' })
 
     } catch (error) {
